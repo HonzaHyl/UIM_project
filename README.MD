@@ -6,7 +6,7 @@
     <ul>
         <li>HR - Tepová frekvence (bpm)</li>
         <li>O2Sat - Saturace O2 (%)</li>
-        <li>Temp - Teplota těla (° C)</li>
+        <li>Temp - Teplota těla (°C)</li>
         <li>SBP - Systolický tlak (mmHg)</li>
         <li>MAP - Střední arteriální tlak (mmHg)</li>
         <li>DBP - Diastolický tlak (mmHg)</li>
@@ -54,3 +54,15 @@
         <li>Stav pacienta isSepsis 0 – neseptický, 1 – septický (odhadovaná veličina)</li>
     </ul>
 
+
+# Informace k projektu
+## Použité knihovny, které je nutné mít nainstalováno pro použití kódu
+<ul>
+    <li>pandas</li>
+    <li>numpy</li>
+    <li>sklearn - předzpracování a trénování modelu</li>
+    <li>matplotlib - vykreslování boxplotů</li>
+    <li>seaborn - vykreslení heatmapy</li>
+    <li>joblib - ukládání a načítání modelu</li>
+    <li>xgboost - model (extream gradient boosting decision tree model)</li>
+</ul>
