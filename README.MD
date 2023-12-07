@@ -66,3 +66,9 @@
     <li>joblib - ukládání a načítání modelu</li>
     <li>xgboost - model (extream gradient boosting decision tree model)</li>
 </ul>
+
+## Soubory, v kterých jsme zobrazovali grafy a učili model
+<ul>
+    <li>preprocessAndTrain.ipynb</li>
+    <li>visualization.ipynb</li>
+</ul>
