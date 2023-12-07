@@ -6,7 +6,7 @@ from GetScoreSepsis import GetScoreSepsis
 from DataPreprocessing import DataPreprocessing
 
 
-def main(filePath):
+def main(filePath, modelPath):
     """
     Funkce slouzi pro overovani schopnosti (predikcnich, klasifikacnich,...) navrzeneho modelu. Model bude overovan
     na skryte mnozine dat, proto je nutne dodrzet pri odevzdani tuto strukturu kodu.
@@ -27,10 +27,8 @@ def main(filePath):
     """
 
     # 1 - Nacteni dat
-    if os.path.isdir(filePath) == False:
-        print("Wrong directory")
 
-    inputData = pd.read_csv(f"{filePath}", delimiter=";")
+    inputData = pd.read_csv(filePath, delimiter=";")
     numRecords = inputData.shape[0]
 
     confMatrix = np.zeros((2, 2))
@@ -42,7 +40,7 @@ def main(filePath):
         targetClass = inputData.isSepsis[idx]
 
         # 3 - Vybaveni natrenovaneho modelu
-        outputClass = MyModel(preprocessedObject.iloc[idx,:])      # Pozor, aby do modelu nevstupovala samotna trida
+        outputClass = MyModel(preprocessedObject.iloc[idx,:], modelPath)      # Pozor, aby do modelu nevstupovala samotna trida
                                                         # objektu, pripadne dalsi nevhodne priznaky
         if outputClass == 0 or outputClass == 1:
             confMatrix[outputClass, targetClass] += 1
@@ -54,7 +52,8 @@ def main(filePath):
 
     return se, sp, acc, ppv, fScore, confMatrix
 
-################## Zadávat vždy absolutní cestu k souboru s daty (včetně názvu souboru s daty) #################
-se, sp, acc, ppv, fScore, confMatrix = main(r"/Users/honza/Desktop/UIM/UIM_project/dataSepsis.csv")    
+################## Zadávat vždy absolutní cestu k souboru s daty (včetně názvu souboru s daty) a absolutní cestu k modelu #################
+se, sp, acc, ppv, fScore, confMatrix = main(filePath="/Users/honza/Desktop/UIM/UIM_project/dataSepsis.csv", 
+                                            modelPath="/Users/honza/Desktop/UIM/UIM_project/HVH_model.joblib")    
 
-print(f"F-score je:{fScore}")
+print(f"Přesnost modelu je:{acc}")
