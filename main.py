@@ -30,7 +30,7 @@ def main(filePath):
     if os.path.isdir(filePath) == False:
         print("Wrong directory")
 
-    inputData = pd.read_csv(f"{filePath}/dataSepsis.csv", delimiter=";")
+    inputData = pd.read_csv(f"{filePath}", delimiter=";")
     numRecords = inputData.shape[0]
 
     confMatrix = np.zeros((2, 2))
@@ -54,5 +54,7 @@ def main(filePath):
 
     return se, sp, acc, ppv, fScore, confMatrix
 
+################## Zadávat vždy absolutní cestu k souboru s daty (včetně názvu souboru s daty) #################
+se, sp, acc, ppv, fScore, confMatrix = main(r"/Users/honza/Desktop/UIM/UIM_project/dataSepsis.csv")    
 
-se, sp, acc, ppv, fScore, confMatrix = main(r"UIM_project")    # Cesta k datum na trenovani
+print(f"F-score je:{fScore}")
