@@ -1,3 +1,6 @@
+import joblib
+ 
+
 def MyModel(inputData):
     """
     Funkce slouzi k vybaveni nauceneho modelu. Vas model bude ulozen v samostatne promenne a se spustenim se aplikuje
@@ -9,7 +12,9 @@ def MyModel(inputData):
     :return outputClass:
         Vystupni trida objektu
     """
-    outputClass = False
+    # Vybavení modelu a provedení predikce
+    loaded_model = joblib.load("UIM_project/HVH_model.joblib")
+    outputClass = loaded_model.predict(inputData.values.reshape(1,-1))
 
 
     return outputClass

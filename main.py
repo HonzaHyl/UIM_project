@@ -35,14 +35,14 @@ def main(filePath):
 
     confMatrix = np.zeros((2, 2))
 
+     # 2 - Predzpracovani dat
+    preprocessedObject = DataPreprocessing(inputData.iloc[:,:-1])
+   
     for idx in range(numRecords):
         targetClass = inputData.isSepsis[idx]
 
-        # 2 - Predzpracovani dat
-        preprocessedObject = DataPreprocessing(inputData.iloc[idx,:-1])
-
         # 3 - Vybaveni natrenovaneho modelu
-        outputClass = MyModel(preprocessedObject)      # Pozor, aby do modelu nevstupovala samotna trida
+        outputClass = MyModel(preprocessedObject.iloc[idx,:])      # Pozor, aby do modelu nevstupovala samotna trida
                                                         # objektu, pripadne dalsi nevhodne priznaky
         if outputClass == 0 or outputClass == 1:
             confMatrix[outputClass, targetClass] += 1
@@ -55,4 +55,4 @@ def main(filePath):
     return se, sp, acc, ppv, fScore, confMatrix
 
 
-se, sp, acc, ppv, fScore, confMatrix = main(r"...")    # Cesta k datum na trenovani
+se, sp, acc, ppv, fScore, confMatrix = main(r"UIM_project")    # Cesta k datum na trenovani
