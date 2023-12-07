@@ -1,7 +1,7 @@
 import joblib
 import xgboost
 
-def MyModel(inputData):
+def MyModel(inputData, modelPath):
     """
     Funkce slouzi k vybaveni nauceneho modelu. Vas model bude ulozen v samostatne promenne a se spustenim se aplikuje
     na vstupni data. Tedy, model se nebude při každém spousteni znovu ucit. Ostatni kod, kterym doslo k nauceni modelu,
@@ -12,8 +12,9 @@ def MyModel(inputData):
     :return outputClass:
         Vystupni trida objektu
     """
+   
     # Vybavení modelu a provedení predikce
-    loaded_model = joblib.load("UIM_project/HVH_model.joblib")
+    loaded_model = joblib.load(modelPath)
     outputClass = loaded_model.predict(inputData.values.reshape(1,-1))
 
 
