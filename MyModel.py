@@ -1,5 +1,5 @@
 import joblib
- 
+import xgboost
 
 def MyModel(inputData):
     """
